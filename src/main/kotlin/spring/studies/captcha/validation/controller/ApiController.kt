@@ -1,6 +1,7 @@
 package spring.studies.captcha.validation.controller
 
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -14,6 +15,7 @@ import javax.validation.Valid
 @RequestMapping("/api")
 class ApiController(val serverCaptchaValidator: ServerCaptchaValidator) {
 
+    @PostMapping("/signup")
     public fun signup(@Valid user: User, @RequestParam(name = "g-recaptcha-response") recaptchaResponse: String,
                       request: HttpServletRequest): ResponseEntity<*> {
 
